@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Практична №3</title>
+</head>
+<body>
+    <h2>Робота з масивом об'єктів</h2>
+    <button onclick="processUsers()">Обробити дані</button>
+
+    <script>
+        function processUsers() {
+            let users = [
+                { name: "Артем", age: 25 },
+                { name: "Марина", age: 17 },
+                { name: "Олег", age: 30 },
+                { name: "Світлана", age: 15 },
+                { name: "Ігор", age: 40 }
+            ];
+
+            let adultUsers = users.filter(user => user.age > 18);
+
+            let userNames = users.map(user => user.name);
+
+            let averageAge = users.reduce((sum, user) => sum + user.age, 0) / users.length;
+
+            console.log("Користувачі старше 18 років:", adultUsers);
+            console.log("Імена всіх користувачів:", userNames);
+            console.log("Середній вік користувачів:", averageAge.toFixed(2));
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Практична №2 JavaScript</title>
+</head>
+<body>
+    <h2>Виконання завдань</h2>
+
+    <button onclick="checkAge()">Перевірка віку</button>
+    <button onclick="showEvenNumbers()">Виведення парних чисел</button>
+    <button onclick="calculateFactorial()">Обчислення факторіалу</button>
+    <button onclick="calculator()">Калькулятор</button>
+    <button onclick="guessNumber()">Гра "Вгадай число"</button>
+
+    <script>
+        function checkAge() {
+            let age = parseInt(prompt("Введіть ваш вік:"));
+            if (isNaN(age)) {
+                alert("Будь ласка, введіть коректне число!");
+                return;
+            }
+            if (age < 18) {
+                alert("Вам заборонено вхід");
+            } else if (age <= 65) {
+                alert("Ласкаво просимо!");
+            } else {
+                alert("Будь ласка, будьте обережні!");
+            }
+        }
+
+        function showEvenNumbers() {
+            let n = parseInt(prompt("Введіть число:"));
+            if (isNaN(n) || n < 2) {
+                console.log("Будь ласка, введіть число більше або рівне 2!");
+                return;
+            }
+            console.log(`Парні числа від 2 до ${n}:`);
+            for (let i = 2; i <= n; i += 2) {
+                console.log(i);
+            }
+        }
+
+        function calculateFactorial() {
+            let n = parseInt(prompt("Введіть число для обчислення факторіалу:"));
+            if (isNaN(n) || n < 0) {
+                console.log("Будь ласка, введіть додатнє число!");
+                return;
+            }
+            let factorial = 1;
+            let i = n;
+            while (i > 1) {
+                factorial *= i;
+                i--;
+            }
+            console.log(`Факторіал ${n} дорівнює ${factorial}`);
+        }
+
+        function calculator() {
+            let a = parseFloat(prompt("Введіть перше число:"));
+            let b = parseFloat(prompt("Введіть друге число:"));
+            let operation = prompt("Введіть операцію (+, -, *, /):");
+
+            if (isNaN(a) || isNaN(b)) {
+                alert("Помилка! Введено некоректне число.");
+                return;
+            }
+
+            let result;
+            switch (operation) {
+                case "+":
+                    result = a + b;
+                    break;
+                case "-":
+                    result = a - b;
+                    break;
+                case "*":
+                    result = a * b;
+                    break;
+                case "/":
+                    if (b === 0) {
+                        alert("Помилка! Ділення на нуль неможливе.");
+                        return;
+                    }
+                    result = a / b;
+                    break;
+                default:
+                    alert("Помилка! Невірна операція.");
+                    return;
+            }
+
+            alert(`Результат: ${result}`);
+        }
+
+        function guessNumber() {
+            let secretNumber = Math.floor(Math.random() * 100) + 1;
+            let guess;
+            do {
+                guess = parseInt(prompt("Вгадайте число від 1 до 100:"));
+                if (isNaN(guess)) {
+                    alert("Будь ласка, введіть число!");
+                    continue;
+                }
+                if (guess < secretNumber) {
+                    alert("Загадане число більше");
+                } else if (guess > secretNumber) {
+                    alert("Загадане число менше");
+                } else {
+                    alert("Вітаємо! Ви вгадали число!");
+                }
+            } while (guess !== secretNumber);
+        }
+    </script>
+</body>
+</html>

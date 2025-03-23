@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>пр №1, варіант 4</title>
+</head>
+<body>
+    <h2>Введіть свої дані</h2>
+    <label for="name">Ім'я:</label>
+    <input type="text" id="name"><br><br>
+
+    <label for="year">Рік народження:</label>
+    <input type="number" id="year"><br><br>
+
+    <label for="city">Місто проживання:</label>
+    <input type="text" id="city"><br><br>
+
+    <button onclick="processData()">Надіслати</button>
+
+    <h3>Результат:</h3>
+    <p id="result"></p>
+
+    <script>
+        function processData() {
+            let name = document.getElementById("name").value;
+            let year = parseInt(document.getElementById("year").value);
+            let city = document.getElementById("city").value.trim().toLowerCase();
+            
+            let 2025 = new Date().getFullYear();
+            let age = 2025 - year;
+            let ageGroup = "";
+
+            if (age < 12) {
+                ageGroup = "дитина";
+            } else if (age < 18) {
+                ageGroup = "підліток";
+            } else if (age < 60) {
+                ageGroup = "дорослий";
+            } else {
+                ageGroup = "літня людина";
+            }
+
+            let capital = "Київ";
+            let cityMessage = (city === capital) ? "Ви живете у столиці України." : "Ваше місто не є столицею.";
+
+            document.getElementById("result").innerHTML = 
+                Привіт, ${name}! Вам ${age} років, ви належите до групи "${ageGroup}". ${cityMessage};
+        }
+    </script>
+</body>
+</html>
